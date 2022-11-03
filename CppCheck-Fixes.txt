@@ -1,0 +1,42 @@
+1, test__branch__MP: CocktailPro.h, CocktailPro.cpp, Waage.h
+
+1. memory/resource leaks in 'CocktailPro::pAvailableIngredients' and 2 other protected attributes
+--> Solution: use destructor to delete all used pointers.
+Fehler in CPPCheck "Class 'CocktailPro' is unsafe
+
+2. Problem with 1 in 2 parts of if-condition:
+"CocktailNo >= 0 is always true". It is because CocktailNo is initialised = 1
+--> Solution: I deleted that condition, and kept the other (probably more) meaningful part "CocktailNo <= max"
+
+2. No Contructor in Waage.h even though this class has 2 attributes
+--> Solution: add a corresponding standard constructor = delete
+======================================
+DeviceVerwalter.cpp:
+
+unreadVariable: wird nicht genutzt, wurde auskommentiert
+cstyleCast: wurde in dynamic_cast geänder
+
+Dispenser.cpp /.h:
+Parameter Inhalt wird jetzt mit anderem namen als const übergeben und über eine inizialisierungsliste eingefügt.
+
+
+Fehler noCopyConstructor
+behoben durch einfügen eines Copy Constructor mit delete
+class-name ( const class-name & ) = delete;	
+klassen werden nie kopiert
+
+Fehler unused private function
+Funktion wurde auskommentiert, da diese für debugzwecke genutzt wurde und im normalen betrieb nie verwendet wurden
+
+Fehler postfix operator
+operator wurde in prefix geändert, 
+
+Fehler noExplicitContructor
+dem Konstuktor wurde als explicit spezifiziert
+
+Fehler unusedFunction
+Funtion bisher unbenutzt, vorerst auskommentiert
+
+Fehler uninitMemberVar
+Variable wurde in Konstuktor nicht initialisiert, 
+fix: initialisierung mit standartwerten in headerfile
